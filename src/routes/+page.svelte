@@ -49,14 +49,20 @@
 	);
 	let shake = $state(false);
 	let animatingRow = $state(-1);
-	let prevAnswerCount = $state(data.answers.length);
+	let prevAnswerCount = $state(-1);
 
 	$effect(() => {
-		if (data.answers.length > prevAnswerCount) {
-			animatingRow = data.answers.length - 1;
-			prevAnswerCount = data.answers.length;
+		const count = data.answers.length;
+		if (prevAnswerCount === -1) {
+			// first run: initialize without animating (page load with existing guesses)
+			prevAnswerCount = count;
+			return;
+		}
+		if (count > prevAnswerCount) {
+			animatingRow = count - 1;
 			setTimeout(() => { animatingRow = -1; }, 1100);
 		}
+		prevAnswerCount = count;
 	});
 
 	let showArchive = $state(false);
