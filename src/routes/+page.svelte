@@ -60,7 +60,9 @@
 		}
 		if (count > prevAnswerCount) {
 			animatingRow = count - 1;
-			setTimeout(() => { animatingRow = -1; }, 1100);
+			setTimeout(() => {
+				animatingRow = -1;
+			}, 1100);
 		}
 		prevAnswerCount = count;
 	});
@@ -127,7 +129,10 @@
 		if (k === 'enter') {
 			if (!submittable) return;
 			// let the form submit naturally
-			document.querySelector<HTMLButtonElement>('[data-key="enter"]')?.closest('form')?.requestSubmit();
+			document
+				.querySelector<HTMLButtonElement>('[data-key="enter"]')
+				?.closest('form')
+				?.requestSubmit();
 			return;
 		}
 		if (k === 'backspace') {
@@ -157,7 +162,7 @@
 <svelte:window onkeydown={keydown} />
 
 <svelte:head>
-	<title>Wordle</title>
+	<title>Furdle</title>
 	<meta name="description" content="A Wordle clone using NYT puzzles" />
 </svelte:head>
 
@@ -183,7 +188,7 @@
 				</svg>
 			</button>
 		</div>
-		<h1>Wordle</h1>
+		<h1>Furdle</h1>
 		<div class="header-side"></div>
 	</header>
 
@@ -398,11 +403,7 @@
 		margin: 0;
 		background: #ffffff;
 		color: #1a1a1b;
-		font-family:
-			'Clear Sans',
-			'Helvetica Neue',
-			Arial,
-			sans-serif;
+		font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
 	}
 
 	.app {
@@ -634,7 +635,9 @@
 	.row.flip .tile[data-state='correct'],
 	.row.flip .tile[data-state='present'],
 	.row.flip .tile[data-state='absent'] {
-		animation: flip-in 0.25s ease forwards, flip-out 0.25s ease 0.25s forwards;
+		animation:
+			flip-in 0.25s ease forwards,
+			flip-out 0.25s ease 0.25s forwards;
 	}
 
 	.row.flip .tile:nth-child(2)[data-state='correct'],
